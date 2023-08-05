@@ -14,6 +14,8 @@ public class CharacterMove : MonoBehaviour
     public enum StateType { Idle, Walk }
     public StateType stateType;
 
+    public int spawned;
+
     bool act;
     bool drop;
 
@@ -43,12 +45,14 @@ public class CharacterMove : MonoBehaviour
     void CameraView()
     {
         Vector3 pos = Cam.WorldToViewportPoint(transform.position);
+       // Debug.Log($"WTV: {pos}");
         if (pos.x > 0.98f) pos.x = 0.98f;
         if (pos.x < 0.02f) pos.x = 0.02f;
         if (pos.y > 1f) pos.y = 1f;
         if (pos.y < 0.1f) pos.y = 0.1f;
         if (pos.z < 0f) pos.z = 0f;
         transform.position = Cam.ViewportToWorldPoint(pos);
+       // Debug.Log($"VTW: {transform.position}");
     }
     IEnumerator State()
     {
@@ -71,16 +75,21 @@ public class CharacterMove : MonoBehaviour
     IEnumerator TrashDrop()
     {
         drop = true;
-        yield return new WaitForSeconds(Random.Range(2, 5));
+        yield return new WaitForSeconds(Random.Range(2, 7));
+        
 
         int trashnum = Random.Range(0, trash.Length);
         Instantiate(trash[trashnum], transform.position, Quaternion.identity);
+        GameSystem_Controller.instance.spawned++;
         drop = false;
     }
+
     IEnumerator PenguinPosition()
     {
         anim.SetBool("Walk", true);
-        rigid.velocity = Vector2.Lerp(box.transform.position, MovePosition(), 0.2f);
+
+        var v2= MovePosition();
+        rigid.velocity = v2*0.6f;
         yield return new WaitForSeconds(3f);
 
         anim.SetBool("Walk", false);
@@ -90,10 +99,11 @@ public class CharacterMove : MonoBehaviour
     {
         Vector2 movepos = box.transform.position;
         Vector2 mapsize = box.size;
-        float x = movepos.x + Random.Range(-mapsize.x / 2f, mapsize.x / 2f);
-        float y = movepos.y + Random.Range(-mapsize.y / 2f, mapsize.y / 2f);
+        float x =Random.Range(-mapsize.x / 2f, mapsize.x / 2f);
+        float y =Random.Range(-mapsize.y / 2f, mapsize.y / 2f);
 
         Vector2 pos = new Vector2(x, y);
+        Debug.Log(this.transform.name + "    " + pos);
         return pos;
     }
 }
