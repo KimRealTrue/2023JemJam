@@ -1346,8 +1346,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec90f8548656514fbece1dc6f0e7f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 150
+  size: 200
   _uiCam: {fileID: 1753965574}
+  successParticle: {fileID: 1298407586345128, guid: 3874caf5253faa249898947e00f01fb0, type: 3}
+  failParticle: {fileID: 1725513033281466, guid: 0f623eaf733434d419b8d17c115942df, type: 3}
   _trashCanList:
   - {fileID: 1596192846}
   - {fileID: 1977037386}

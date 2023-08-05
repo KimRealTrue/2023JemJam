@@ -1158,6 +1158,7 @@ MonoBehaviour:
   Effect_SceneMove: {fileID: 8300000, guid: cc50671e56a5ea24ba08f21d607360a1, type: 3}
   Effect_TrashPickup: {fileID: 8300000, guid: d0a7cb6b1d8ef9645b4ce03bd4345fea, type: 3}
   Effect_TrashDrop: {fileID: 8300000, guid: 5caf9388389bacc49b549c62ed505844, type: 3}
+  Effect_TrashFail: {fileID: 8300000, guid: a6071a0f9a0892d49ba24ad1f3473c2c, type: 3}
   BGM_AudioSource: {fileID: 361880845}
   Effect_AudioSource: {fileID: 2147203769}
 --- !u!4 &1463614211

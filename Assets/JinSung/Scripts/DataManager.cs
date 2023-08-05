@@ -8,7 +8,7 @@ public class DataManager : MonoBehaviour
 	public GlobalData globalNormalData;
 	public GlobalData globalHardData;
 
-	[HideInInspector]
+
 	public int stage;
 
 	public static DataManager Instance {
@@ -26,7 +26,6 @@ public class DataManager : MonoBehaviour
 		}
 	}
 
-	[HideInInspector]
 	public int ecoDamage = 0;
 
 
@@ -68,21 +67,21 @@ public class DataManager : MonoBehaviour
 	public void GetEcoDamage()
 	{
 		if (stage == 1) {
-		Debug.Log($"환경 데미지: {globalEasyData.ecoDamage}");
+		//Debug.Log($"환경 데미지: {globalEasyData.ecoDamage}");
 			ecoDamage += globalEasyData.ecoDamage;
 		}
 		else if (stage == 2) {
-		Debug.Log($"환경 데미지: {globalNormalData.ecoDamage}");
+		//Debug.Log($"환경 데미지: {globalNormalData.ecoDamage}");
 			ecoDamage += globalNormalData.ecoDamage;
 		}
 		else if (stage == 3) {
-		Debug.Log($"환경 데미지: {globalHardData.ecoDamage}");
+		//Debug.Log($"환경 데미지: {globalHardData.ecoDamage}");
 			ecoDamage += globalHardData.ecoDamage;
 		}
 
 		if (ecoDamage > EcoHp) {
 			if (Timer_Controller.Instance.IsGameOverPanel == false) {
-				Debug.Log("EEE");
+				//Debug.Log("EEE");
 				Timer_Controller.Instance.OpenGameOverPanel(() => {
 					SceneChanger.Instance.ChangeScene(SceneName.End_Fail);
 				});
@@ -94,7 +93,7 @@ public class DataManager : MonoBehaviour
 
 	public void GetItem(ItemObject item)
 	{
-		Debug.Log($"아이템 획득: {item}");
+		//Debug.Log($"아이템 획득: {item}");
 		switch (item.Data.ItemType) {
 			case Global.ItemType.Trash: {
 				_itemDataList.Add(item);

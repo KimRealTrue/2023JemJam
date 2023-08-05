@@ -26,8 +26,8 @@ public class TrashSpawner : MonoBehaviour
 	{
 		int idx = 0;
 		foreach (var t in trashList) {
-			//ItemObject itemPrefab = _prefabList.Find(p => p.Data.Name == t.name && p.Data.TrashType == t.trashType);
-			ItemObject itemPrefab = _prefabList.Find(p => p.Data.TrashType == t.trashType);
+			ItemObject itemPrefab = _prefabList.Find(p => p.Data.Name == t.name && p.Data.TrashType == t.trashType);
+			//ItemObject itemPrefab = _prefabList.Find(p => p.Data.TrashType == t.trashType);
 			ItemObject item = GameObject.Instantiate(itemPrefab);
 			item.transform.SetParent(_trashParent);
 			item.transform.position = new Vector3(Random.Range(-_spawnRange.x, _spawnRange.x),
@@ -39,6 +39,11 @@ public class TrashSpawner : MonoBehaviour
 			item.transform.rotation = Quaternion.Euler(r);
 			idx++;
 		}
+	}
+
+	public void GameOver()
+	{
+		_trashParent.gameObject.SetActive(false);
 	}
 
 	public struct SpawnArguments

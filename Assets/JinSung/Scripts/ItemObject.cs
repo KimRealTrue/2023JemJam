@@ -37,12 +37,13 @@ public class ItemObject : MonoBehaviour
 
 	private void Update()
 	{
-		if (_isAlive == true && autoRemove) {
+		if (_isAlive == true && autoRemove && Timer_Controller.Instance.IsGameOverPanel == false) {
 			_lifeTime -= Time.deltaTime;
 
 			if (_lifeTime <= 0) {
 				_isAlive = false;
 
+				Audio_Controller.instance.EffectPlay_TrashFail();
 				DataManager.Instance.GetEcoDamage();
 				Destroy(gameObject);
 			}
@@ -69,7 +70,12 @@ public class ItemObject : MonoBehaviour
 
 	private void RecycleAnim()
 	{
-		StartCoroutine(RecycleAimation());
+		try {
+			StartCoroutine(RecycleAimation());
+		}
+		catch (System.Exception ex) {
+			
+		}
 	}
 
 	IEnumerator RecycleAimation()

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f30cbf146b1d8d947a21717c4c969cec, type: 3}
-  m_Name: Global_3 Nomal Data
+  m_Name: Global_3 Hard Data
   m_EditorClassIdentifier: 
-  ecoHP: 80
-  gameTime: 120
-  dropTime: {x: 2, y: 4}
-  ecoDamage: 20
-  recycleTime: 10
-  recycleEcoDamage: 6
+  ecoHP: 15
+  gameTime: 45
+  dropTime: {x: 3, y: 3.5}
+  ecoDamage: 1
+  recycleTime: 50
+  recycleEcoDamage: 1

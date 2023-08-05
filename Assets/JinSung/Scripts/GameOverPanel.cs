@@ -30,14 +30,16 @@ public class GameOverPanel : MonoBehaviour
 
 	IEnumerator FadeIn(System.Action callback)
 	{
-		float time = 1;
-		float dt = 1 / _removeTime;
-		Vector3 originScale = transform.localScale;
-
 		for (int i = 0; i < fadeTargets.Length; ++i) {
 			Color c = _originColor[i];
 			fadeTargets[i].color = new Color(c.r, c.g, c.b, 0);
 		}
+
+		yield return new WaitForSeconds(0.5f);
+
+		float time = 1;
+		float dt = 1 / _removeTime;
+		Vector3 originScale = transform.localScale;
 
 		while (time > 0) {
 			time -= Time.deltaTime * dt;

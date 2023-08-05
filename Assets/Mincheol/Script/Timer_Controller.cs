@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Timer_Controller : MonoBehaviour
 {
-    float startingTime;
-    float remainTime;
+    public float startingTime;
+    public float remainTime;
     [SerializeField] Image clock;
     [SerializeField] GameOverPanel _gameOverPanel;
 	public bool IsGameOverPanel => _gameOverPanel.gameObject.activeSelf;
@@ -18,20 +18,11 @@ public class Timer_Controller : MonoBehaviour
 
     void Start()
     {
-		StartCoroutine(Late2Start());
-    }
-
-
-	IEnumerator Late2Start()
-	{
-
-		yield return null;
-		yield return null;
 		GameSystem_Controller.instance.PlayGame();
-		startingTime = DataManager.Instance.GameTime;
 		Instance = this;
+		startingTime = DataManager.Instance.GameTime;
 		remainTime = 0;
-	}
+    }
 
 
     void Update()

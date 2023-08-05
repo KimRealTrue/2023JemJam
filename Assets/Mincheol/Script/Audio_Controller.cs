@@ -17,6 +17,7 @@ public class Audio_Controller : MonoBehaviour
     [SerializeField] AudioClip Effect_SceneMove;
     [SerializeField] AudioClip Effect_TrashPickup;
     [SerializeField] AudioClip Effect_TrashDrop;
+    [SerializeField] AudioClip Effect_TrashFail;
 
     [SerializeField] AudioSource BGM_AudioSource;
     [SerializeField] AudioSource Effect_AudioSource;
@@ -50,6 +51,10 @@ public class Audio_Controller : MonoBehaviour
     public void EffectPlay_TrashPickup()
     {
         Effect_AudioSource.PlayOneShot(Effect_TrashPickup);
+    }    
+	public void EffectPlay_TrashFail()
+    {
+        Effect_AudioSource.PlayOneShot(Effect_TrashFail);
     }
     public void EffectPlay_TrashDrop()
     {

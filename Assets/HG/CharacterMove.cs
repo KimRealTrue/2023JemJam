@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.AI;
-using UnityEditor.Experimental.GraphView;
-using UnityEngine.Animations;
+
 
 public class CharacterMove : MonoBehaviour
 {
@@ -56,7 +53,7 @@ public class CharacterMove : MonoBehaviour
        // Debug.Log($"WTV: {pos}");
         if (pos.x > 0.88f) pos.x = 0.88f;
         if (pos.x < 0.12f) pos.x = 0.12f;
-        if (pos.y > 0.8f) pos.y = 0.8f;
+        if (pos.y > 0.7f) pos.y = 0.7f;
         if (pos.y < 0.2f) pos.y = 0.2f;
         if (pos.z < 0f) pos.z = 0f;
         transform.position = Cam.ViewportToWorldPoint(pos);

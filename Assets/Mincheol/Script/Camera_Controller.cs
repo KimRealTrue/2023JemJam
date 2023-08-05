@@ -22,6 +22,16 @@ public class Camera_Controller : MonoBehaviour
 	public Camera CurrentCamera => allCameras[currentCameraIndex];
 
 
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
+
+			OnClickRight();
+		}
+		else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
+			OnClickLeft();
+		}
+	}
 
 
 	public void OnClickRight()
@@ -33,7 +43,7 @@ public class Camera_Controller : MonoBehaviour
 		if (stage == 1) {
 			max = 3;
 		}
-		else if (stage == 1) {
+		else if (stage == 2) {
 			max = 4;
 		}
 		else {
@@ -61,7 +71,9 @@ public class Camera_Controller : MonoBehaviour
 
     public void OnClickLeft()
     {
-        switch(currentCameraIndex)
+		Audio_Controller.instance.EffectPlay_SceneMove();
+
+		switch (currentCameraIndex)
         {
             case 1 : allCameras[1].gameObject.SetActive(false); allCameras[0].gameObject.SetActive(true);  currentCameraIndex--; break;
             case 2 : allCameras[2].gameObject.SetActive(false); allCameras[1].gameObject.SetActive(true);  currentCameraIndex--;  break;

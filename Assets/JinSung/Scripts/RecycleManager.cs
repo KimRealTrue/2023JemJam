@@ -72,10 +72,7 @@ public class RecycleManager : MonoBehaviour
 	{
 		if (removeCount == itemCount) {
 			_timer.Stop();
-			//Debug.Log("클리어");
-
-			_gameOverPanel.gameObject.SetActive(true);
-			_gameOverPanel.StartFaceIn(callback);
+			ActiveGameOverPanel(callback);
 		}
 	}
 
@@ -85,13 +82,18 @@ public class RecycleManager : MonoBehaviour
 			FailRecycle();
 		}
 		else {
-			SceneChanger.Instance.ChangeScene(SceneName.End_Success);
+			SuccessRecycle();
 		}
 	}
 
 	public void FailRecycle()
 	{
 		SceneChanger.Instance.ChangeScene(SceneName.End_Fail);
+	}
+
+	public void SuccessRecycle()
+	{
+		SceneChanger.Instance.ChangeScene(SceneName.End_Success);
 	}
 
 
@@ -109,11 +111,17 @@ public class RecycleManager : MonoBehaviour
 	{
 		_fillImage.fillAmount = 0f;
 		int panelty = itemCount - successCount;
-		Debug.Log($"클리어 실패: {panelty}");
+		Debug.Log($"시간초과 실패: {panelty}");
 
 		DataManager.Instance.GetRecycleEcoDamage(panelty);
+		ActiveGameOverPanel(FailRecycle);
+	}
+
+	public void ActiveGameOverPanel(System.Action action)
+	{
 		_gameOverPanel.gameObject.SetActive(true);
-		_gameOverPanel.StartFaceIn(FailRecycle);
+		_spawner.GameOver();
+		_gameOverPanel.StartFaceIn(action);
 	}
 
 	public void OnTouchStartButton()

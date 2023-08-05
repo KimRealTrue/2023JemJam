@@ -11,6 +11,9 @@ public class RecyclePickupReceiver : MonoBehaviour
 	private Vector3 _pos;
 	private Vector3 _uiPos;
 
+	public GameObject successParticle;
+	public GameObject failParticle;
+
 	[SerializeField]
 	private List<RectTransform> _trashCanList = new List<RectTransform>();
 
@@ -98,14 +101,17 @@ public class RecyclePickupReceiver : MonoBehaviour
 				//Debug.Log(item);
 				if (tc.trashType == item.Data.TrashType) {
 					item.RemoveInRecycle();
-					Debug.Log($"성공" +
-						$"\n쓰레기통: {tc.trashType}, 아이템: {item.Data.TrashType}");
+					Instantiate(successParticle, item.transform.position, Quaternion.identity, item.transform.parent);
+
+					//Debug.Log($"성공" +
+					//	$"\n쓰레기통: {tc.trashType}, 아이템: {item.Data.TrashType}");
 					OnSuccess?.Invoke();
 				}
 				else {
 					item.RemoveInRecycle();
-					Debug.Log($"실패!!" +
-						$"\n쓰레기통: {tc.trashType}, 아이템: {item.Data.TrashType} => {DataManager.Instance.stage}");
+					Instantiate(failParticle, item.transform.position, Quaternion.identity, item.transform.parent);
+					//Debug.Log($"실패!!" +
+					//	$"\n쓰레기통: {tc.trashType}, 아이템: {item.Data.TrashType} => {DataManager.Instance.stage}");
 					OnFail?.Invoke();
 				}
 			}

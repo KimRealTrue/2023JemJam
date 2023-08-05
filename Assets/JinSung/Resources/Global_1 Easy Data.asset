@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30cbf146b1d8d947a21717c4c969cec, type: 3}
   m_Name: Global_1 Easy Data
   m_EditorClassIdentifier: 
-  ecoHP: 80
-  gameTime: 120
-  dropTime: {x: 2, y: 4}
-  ecoDamage: 15
-  recycleTime: 10
-  recycleEcoDamage: 5
+  ecoHP: 20
+  gameTime: 45
+  dropTime: {x: 4, y: 5}
+  ecoDamage: 1
+  recycleTime: 70
+  recycleEcoDamage: 1
