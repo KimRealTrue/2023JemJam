@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ItemPickupReceiver : MonoBehaviour
 {
+	public Camera_Controller cameraController;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +21,8 @@ public class ItemPickupReceiver : MonoBehaviour
 		if (EventSystem.current.IsPointerOverGameObject() == false) {
 			GameObject contactedObject = RaycastObject();
 			if (contactedObject != null) {
-				ItemObject item = contactedObject.transform.parent.GetComponent<ItemObject>();
-				if (item != null) {
+				ItemObject item = contactedObject.GetComponent<ItemObject>();
+				if (item != null && item.IsAlive) {
 					item.PickByTouch();
 					DataManager.Instance.GetItem(item);
 				}
@@ -41,13 +42,13 @@ public class ItemPickupReceiver : MonoBehaviour
 
 	private GameObject GetObject()
 	{
-		Vector3 clickWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		Vector3 clickWorldPosition = cameraController.CurrentCamera.ScreenToWorldPoint(Input.mousePosition);
 		clickWorldPosition.z = -10f;
 
 		RaycastHit2D[] hits = Physics2D.RaycastAll(clickWorldPosition, Vector2.zero, 100, LayerMask.GetMask("Item"));
 		GameObject forwardObject = null;
 
-		Debug.Log(hits.Length);
+		//Debug.Log(hits.Length);
 
 		if (hits != null && hits.Length > 0) {
 			float zValue = float.MaxValue;

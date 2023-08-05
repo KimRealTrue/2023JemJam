@@ -21,6 +21,7 @@ public class DataManager : MonoBehaviour
 	{
 		GameObject go = new GameObject("DataManager");
 		_instance = go.AddComponent<DataManager>();
+		DontDestroyOnLoad(go);
 	}
 
 
@@ -45,14 +46,6 @@ public class DataManager : MonoBehaviour
 		Debug.Log($"아이템 획득: {item}");
 
 		switch (item.Data.ItemType) {
-			case Global.ItemType.Positive: {
-				Debug.Log("긍정 효과 발휘");
-				break;
-			}
-			case Global.ItemType.Negative: {
-				Debug.Log("부정 효과 발휘");
-				break;
-			}
 			case Global.ItemType.Trash: {
 				_itemDataList.Add(item);
 				break;

@@ -79,7 +79,8 @@ public class CharacterMove : MonoBehaviour
         
 
         int trashnum = Random.Range(0, trash.Length);
-        Instantiate(trash[trashnum], transform.position, Quaternion.identity);
+        GameObject to= Instantiate(trash[trashnum], transform.position, Quaternion.identity);
+		to.GetComponent<ItemObject>().autoRemove = true;
         GameSystem_Controller.instance.spawned++;
         drop = false;
     }
@@ -103,7 +104,7 @@ public class CharacterMove : MonoBehaviour
         float y =Random.Range(-mapsize.y / 2f, mapsize.y / 2f);
 
         Vector2 pos = new Vector2(x, y);
-        Debug.Log(this.transform.name + "    " + pos);
+        //Debug.Log(this.transform.name + "    " + pos);
         return pos;
     }
 }

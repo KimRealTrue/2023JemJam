@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Mincheol/Scenes/Hard.unity
     guid: a1f900bbfaab62c42b80c37f8da72df8
+  - enabled: 1
+    path: Assets/JinSung/Scene/RecycleScene.unity
+    guid: a4e4ce4968ea55343b672924d3e460c7
   m_configObjects: {}

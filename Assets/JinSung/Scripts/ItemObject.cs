@@ -18,27 +18,45 @@ public class ItemObject : MonoBehaviour
 	private SpriteRenderer _spriteRenderer;
 	public float removeTime = 0.5f;
 
+	float _lifeTime = 0;
+	bool _isAlive = false;
+
+	public bool autoRemove = false;
+
+
+	public bool IsAlive => _isAlive;
+
 	private void Start()
 	{
 		_spriteRenderer = GetComponent<SpriteRenderer>();
 		_spriteRenderer.sprite = _itemData.ItemSprite;
+		_lifeTime = _itemData.RemoveTime;
+		_isAlive = true;
+	}
+
+
+	private void Update()
+	{
+		if (_isAlive == true && autoRemove) {
+			_lifeTime -= Time.deltaTime;
+
+			if (_lifeTime <= 0) {
+				_isAlive = false;
+				Destroy(gameObject);
+			}
+		}
 	}
 
 
 	public void PickByTouch()
 	{
+		_isAlive = false;
 		PickAim();
 	}
 
 	public void RemoveInRecycle()
 	{
 		RecycleAnim();
-	}
-
-
-	private void SpawnAnim()
-	{
-
 	}
 
 	private void PickAim()

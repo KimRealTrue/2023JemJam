@@ -175,5 +175,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   box: {fileID: 0}
   trash:
-  - {fileID: 8864346214499102561, guid: 5b9ce9accb67adc4894bf94a8f068b98, type: 3}
+  - {fileID: 161340462207730894, guid: 9666e6b6c9cc2c644bb8fd55d89b7095, type: 3}
+  - {fileID: 161340462207730894, guid: fb38458cd79f36745a7ff40583d9634c, type: 3}
+  - {fileID: 161340462207730894, guid: e8f877fe063e1384eb4dd730265f4483, type: 3}
+  - {fileID: 161340462207730894, guid: b4664e15eb649474280a815105abb4e5, type: 3}
+  - {fileID: 161340462207730894, guid: 7a34712c4b0933c49bef00e7607016ab, type: 3}
+  - {fileID: 161340462207730894, guid: 0780d2db122186040b2c390b9b46849e, type: 3}
+  - {fileID: 161340462207730894, guid: 4d6cb2eeefca9714ab17921504c0eb52, type: 3}
+  - {fileID: 161340462207730894, guid: 9757cdc2da5ad6d41a4bf3cb6a5ddd92, type: 3}
+  Cam: {fileID: 0}
   stateType: 0
+  spawned: 0

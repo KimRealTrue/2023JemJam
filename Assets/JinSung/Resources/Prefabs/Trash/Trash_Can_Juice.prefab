@@ -50,9 +50,10 @@ MonoBehaviour:
     _name: "\uC74C\uB8CC\uC218\uCE94"
     _itemType: 3
     _trashType: 2
-    _sprite: {fileID: 7482667652216324306, guid: 8d558f25882719445ae4770846f10491, type: 3}
+    _sprite: {fileID: 21300000, guid: 45856743241ccc545898c2f909af59d1, type: 3}
     _removeTime: 3
   removeTime: 0.7
+  autoRemove: 0
 --- !u!212 &341974416546770811
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -91,10 +92,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1099876213
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 45856743241ccc545898c2f909af59d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,16 +119,16 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.21133333}
+  m_Offset: {x: 0, y: -0.098415494}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.59, y: 5.12}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4, y: 5.6194973}
   m_EdgeRadius: 0

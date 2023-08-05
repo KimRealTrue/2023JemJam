@@ -18,7 +18,13 @@ public class Camera_Controller : MonoBehaviour
         currentCameraIndex = 0;
     }
 
-    public void OnClickRight()
+
+	public Camera CurrentCamera => allCameras[currentCameraIndex];
+
+
+
+
+	public void OnClickRight()
     {
         switch(currentCameraIndex)
         {

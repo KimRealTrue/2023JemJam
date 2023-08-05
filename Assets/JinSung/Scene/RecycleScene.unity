@@ -715,7 +715,6 @@ MonoBehaviour:
   - {fileID: 161340462207730895, guid: 0780d2db122186040b2c390b9b46849e, type: 3}
   - {fileID: 161340462207730895, guid: 4d6cb2eeefca9714ab17921504c0eb52, type: 3}
   - {fileID: 161340462207730895, guid: 9757cdc2da5ad6d41a4bf3cb6a5ddd92, type: 3}
-  removeCount: 0
   _spawnArea: {fileID: 589083355}
   _trashParent: {fileID: 214589814}
 --- !u!4 &819463082
@@ -1021,6 +1020,10 @@ MonoBehaviour:
   _startPanel: {fileID: 969549951}
   _receiver: {fileID: 1762926410}
   _spawner: {fileID: 819463081}
+  itemCount: 0
+  removeCount: 0
+  successCount: 0
+  failCount: 0
 --- !u!4 &1318656183
 Transform:
   m_ObjectHideFlags: 0

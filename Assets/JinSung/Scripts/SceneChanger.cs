@@ -31,6 +31,7 @@ public class SceneChanger : MonoBehaviour
 	{
 		GameObject go = new GameObject("DataManager");
 		_instance = go.AddComponent<SceneChanger>();
+		DontDestroyOnLoad(go);
 	}
 
 

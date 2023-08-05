@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -91,14 +92,8 @@ public class RecycleManager : MonoBehaviour
 		_startPanel.SetActive(false);
 		_timer.TimerStart();
 
-
-		List<TrashSpawner.SpawnArguments> list = new List<TrashSpawner.SpawnArguments>();
-
-		for (int i = 0; i < 10; ++i) {
-			int r = Random.Range(1, (int)Global.TrashType.EnumCount);
-			TrashSpawner.SpawnArguments sa = new TrashSpawner.SpawnArguments(r);
-			list.Add(sa);
-		}
+		var itemList = DataManager.Instance.AllItem;
+		List<TrashSpawner.SpawnArguments> list = itemList.Select(s => new TrashSpawner.SpawnArguments(s.Data)).ToList();
 
 		itemCount = list.Count;
 		_spawner.SpawnItems(list);
