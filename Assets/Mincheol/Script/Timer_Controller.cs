@@ -18,23 +18,36 @@ public class Timer_Controller : MonoBehaviour
 
     void Start()
     {
+		StartCoroutine(Late2Start());
+    }
+
+
+	IEnumerator Late2Start()
+	{
+
+		yield return null;
+		yield return null;
+		GameSystem_Controller.instance.PlayGame();
 		startingTime = DataManager.Instance.GameTime;
 		Instance = this;
 		remainTime = 0;
-    }
+	}
+
 
     void Update()
     {
-		if (_flowTime) {
-			if (startingTime > remainTime) {
-				remainTime = remainTime + Time.deltaTime;
-				clock.fillAmount = (float)remainTime / startingTime;
-			}
-			else {
-				if (Timer_Controller.Instance.IsGameOverPanel == false) {
-					OpenGameOverPanel(() => {
-						SceneChanger.Instance.ChangeScene(SceneName.Recycle);
-					});
+		if (GameSystem_Controller.instance.gameStart) {
+			if (_flowTime) {
+				if (startingTime > remainTime) {
+					remainTime = remainTime + Time.deltaTime;
+					clock.fillAmount = (float)remainTime / startingTime;
+				}
+				else {
+					if (Timer_Controller.Instance.IsGameOverPanel == false) {
+						OpenGameOverPanel(() => {
+							SceneChanger.Instance.ChangeScene(SceneName.Recycle);
+						});
+					}
 				}
 			}
 		}

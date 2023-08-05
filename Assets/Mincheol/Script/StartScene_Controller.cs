@@ -51,16 +51,28 @@ public class StartScene_Controller : MonoBehaviour
     public void StartEasy()
     {
         SceneManager.LoadScene("Easy");
+
+		if (GameSystem_Controller.instance != null) {
+			GameSystem_Controller.instance.gameStart = false;
+		}
     }
 
     public void StartNormal()
     {
         SceneManager.LoadScene("Normal");
-    }
+
+		if (GameSystem_Controller.instance != null) {
+			GameSystem_Controller.instance.gameStart = false;
+		}
+	}
 
     public void StartHard()
     {
         SceneManager.LoadScene("Hard");
-    }   
+
+		if (GameSystem_Controller.instance != null) {
+			GameSystem_Controller.instance.gameStart = false;
+		}
+	}   
 }
 

@@ -1775,6 +1775,7 @@ MonoBehaviour:
   rButton: {fileID: 1869927133}
   stageNumber: 2
   spawned: 0
+  gameStart: 0
 --- !u!4 &1201130657
 Transform:
   m_ObjectHideFlags: 0
@@ -3088,6 +3089,10 @@ PrefabInstance:
       value: Tutorial_
       objectReference: {fileID: 0}
     - target: {fileID: 2555186364573212980, guid: d9c17ef0ffbec444bab1a1619bb92035, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555186364573212980, guid: d9c17ef0ffbec444bab1a1619bb92035, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1201130656}
@@ -3095,6 +3100,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CloseTutorial
       objectReference: {fileID: 0}
+    - target: {fileID: 7314694516306990482, guid: d9c17ef0ffbec444bab1a1619bb92035, type: 3}
+      propertyPath: _lButton
+      value: 
+      objectReference: {fileID: 1060510095}
+    - target: {fileID: 7314694516306990482, guid: d9c17ef0ffbec444bab1a1619bb92035, type: 3}
+      propertyPath: _rButton
+      value: 
+      objectReference: {fileID: 1869927133}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9c17ef0ffbec444bab1a1619bb92035, type: 3}
 --- !u!224 &2098497917 stripped

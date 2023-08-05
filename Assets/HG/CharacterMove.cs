@@ -35,21 +35,29 @@ public class CharacterMove : MonoBehaviour
 
     void Update()
     {
-        CameraView();
-        if (!drop)
-            StartCoroutine(TrashDrop());
-        if(!act)
-            StartCoroutine(State());
+		if (GameSystem_Controller.instance.gameStart) {
+			//CameraView();
+			if (!drop)
+				StartCoroutine(TrashDrop());
+			if (!act)
+				StartCoroutine(State());
+		}
     }
 
-    void CameraView()
+
+	private void FixedUpdate()
+	{
+		CameraView();
+	}
+
+	void CameraView()
     {
         Vector3 pos = Cam.WorldToViewportPoint(transform.position);
        // Debug.Log($"WTV: {pos}");
-        if (pos.x > 0.98f) pos.x = 0.98f;
-        if (pos.x < 0.02f) pos.x = 0.02f;
-        if (pos.y > 1f) pos.y = 1f;
-        if (pos.y < 0.1f) pos.y = 0.1f;
+        if (pos.x > 0.88f) pos.x = 0.88f;
+        if (pos.x < 0.12f) pos.x = 0.12f;
+        if (pos.y > 0.8f) pos.y = 0.8f;
+        if (pos.y < 0.2f) pos.y = 0.2f;
         if (pos.z < 0f) pos.z = 0f;
         transform.position = Cam.ViewportToWorldPoint(pos);
        // Debug.Log($"VTW: {transform.position}");
