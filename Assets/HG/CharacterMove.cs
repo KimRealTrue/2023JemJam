@@ -75,14 +75,16 @@ public class CharacterMove : MonoBehaviour
     IEnumerator TrashDrop()
     {
         drop = true;
-        yield return new WaitForSeconds(Random.Range(2, 7));
+		var v2 = DataManager.Instance.TrashDropTime;
+		yield return new WaitForSeconds(Random.Range(v2.x, v2.y));
         
 
         int trashnum = Random.Range(0, trash.Length);
         GameObject to= Instantiate(trash[trashnum], transform.position, Quaternion.identity);
 		to.GetComponent<ItemObject>().autoRemove = true;
         GameSystem_Controller.instance.spawned++;
-        drop = false;
+		Audio_Controller.instance.EffectPlay_TrashDrop();
+		drop = false;
     }
 
     IEnumerator PenguinPosition()
@@ -90,7 +92,7 @@ public class CharacterMove : MonoBehaviour
         anim.SetBool("Walk", true);
 
         var v2= MovePosition();
-        rigid.velocity = v2*0.6f;
+        rigid.velocity = v2 * 0.6f;
         yield return new WaitForSeconds(3f);
 
         anim.SetBool("Walk", false);

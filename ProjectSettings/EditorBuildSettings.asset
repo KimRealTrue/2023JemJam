@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: e1d9718fdb3db2a4cb61997839f4da19
+    path: Assets/Mincheol/Scenes/StartScene.unity
+    guid: 319e5c5ceb8f40941b7a359fbe93c2ba
   - enabled: 1
     path: Assets/Mincheol/Scenes/Easy.unity
     guid: 0c98b57e13f457140b055571fa41fdd3
@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/JinSung/Scene/RecycleScene.unity
     guid: a4e4ce4968ea55343b672924d3e460c7
+  - enabled: 1
+    path: Assets/Mincheol/Scenes/GoodEnding.unity
+    guid: f6a8983f77704cd47af6db705f198428
+  - enabled: 1
+    path: Assets/Mincheol/Scenes/BadEnding.unity
+    guid: 7234ee434179974479516a8fb1e45ec9
   m_configObjects: {}

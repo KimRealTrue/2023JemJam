@@ -22,8 +22,6 @@ public class GameOverPanel : MonoBehaviour
 	}
 
 
-
-
 	public void StartFaceIn(System.Action callback)
 	{
 		StartCoroutine(FadeIn(callback));

@@ -5,15 +5,22 @@ using UnityEngine.UI;
 
 public class Timer_Controller : MonoBehaviour
 {
-    [SerializeField] float startingTime;
-    [SerializeField] float remainTime;
+    float startingTime;
+    float remainTime;
     [SerializeField] Image clock;
     [SerializeField] GameOverPanel _gameOverPanel;
+	public bool IsGameOverPanel => _gameOverPanel.gameObject.activeSelf;
 	bool _flowTime = true;
+
+	public static Timer_Controller Instance {
+		get;private set;
+	}
 
     void Start()
     {
-        remainTime = 0;
+		startingTime = DataManager.Instance.GameTime;
+		Instance = this;
+		remainTime = 0;
     }
 
     void Update()
@@ -24,12 +31,19 @@ public class Timer_Controller : MonoBehaviour
 				clock.fillAmount = (float)remainTime / startingTime;
 			}
 			else {
-				_gameOverPanel.gameObject.SetActive(true);
-				_gameOverPanel.StartFaceIn(()=> {
-					SceneChanger.Instance.ChangeScene(SceneName.Recycle);
-				});
-				_flowTime = false;
+				if (Timer_Controller.Instance.IsGameOverPanel == false) {
+					OpenGameOverPanel(() => {
+						SceneChanger.Instance.ChangeScene(SceneName.Recycle);
+					});
+				}
 			}
 		}
     }
+
+	public void OpenGameOverPanel(System.Action callback)
+	{
+		_flowTime = false;
+		_gameOverPanel.gameObject.SetActive(true);
+		_gameOverPanel.StartFaceIn(callback);
+	}
 }

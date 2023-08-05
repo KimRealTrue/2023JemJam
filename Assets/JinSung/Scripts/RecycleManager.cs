@@ -13,9 +13,13 @@ public class RecycleManager : MonoBehaviour
 	private Button _startButton;
 	[SerializeField]
 	private GameObject _startPanel;
+	[SerializeField]
+	private GameObject _tutorialPanel;
 
 	[SerializeField]
 	private RecyclePickupReceiver _receiver;
+	[SerializeField]
+	private GameOverPanel _gameOverPanel;
 	[SerializeField]
 	private TrashSpawner _spawner;
 	RecycleTimer _timer;
@@ -28,22 +32,16 @@ public class RecycleManager : MonoBehaviour
 
 	private void Start()
 	{
-		_timer = new RecycleTimer(10);
+		_timer = new RecycleTimer(DataManager.Instance.RecycleTime);
 		_timer.OnTimerStart += TimerStart;
 		_timer.OnTimerUpdate += TimerUpdated;
 		_timer.OnTimerEnd += TimerEnd;
 
 		_startButton.onClick.AddListener(OnTouchStartButton);
-		_receiver.OnSuccess += () => {
-			removeCount++;
-			successCount++;
-			ClearRecycle();
-		};
-		_receiver.OnFail += () => {
-			removeCount++;
-			failCount++;
-			ClearRecycle();
-		};
+		_receiver.OnSuccess += OnSuccess;
+		_receiver.OnFail += OnFail;
+
+		Audio_Controller.instance.BGMPlay_PlayingRecycle();
 	}
 
 	private void Update()
@@ -51,23 +49,49 @@ public class RecycleManager : MonoBehaviour
 		_timer.Update();
 	}
 
-	public void ClearRecycle()
+
+	void OnSuccess()
+	{
+		Audio_Controller.instance.EffectPlay_RecycleSuccess();
+		removeCount++;
+		successCount++;
+		CheckClearRecycle(End);
+	}
+
+	private void OnFail()
+	{
+		Audio_Controller.instance.EffectPlay_RecycleFail();
+		removeCount++;
+		failCount++;
+		DataManager.Instance.GetRecycleEcoDamage(1);
+		CheckClearRecycle(FailRecycle);
+	}
+	
+
+	public void CheckClearRecycle(System.Action callback)
 	{
 		if (removeCount == itemCount) {
 			_timer.Stop();
-			Debug.Log("클리어 성공");
+			//Debug.Log("클리어");
 
-			//TODO: 패널티 받을것
+			_gameOverPanel.gameObject.SetActive(true);
+			_gameOverPanel.StartFaceIn(callback);
+		}
+	}
 
-			//SceneChanger.Instance.ChangeScene(SceneName.End_Success);
+	void End()
+	{
+		if (DataManager.Instance.IsEcoFail()) {
+			FailRecycle();
+		}
+		else {
+			SceneChanger.Instance.ChangeScene(SceneName.End_Success);
 		}
 	}
 
 	public void FailRecycle()
 	{
-		int panelty = itemCount - successCount;
-		Debug.Log($"클리어 실패: {panelty}");
-		//SceneChanger.Instance.ChangeScene(SceneName.End_Fail);
+		SceneChanger.Instance.ChangeScene(SceneName.End_Fail);
 	}
 
 
@@ -84,12 +108,18 @@ public class RecycleManager : MonoBehaviour
 	private void TimerEnd(float max, float time)
 	{
 		_fillImage.fillAmount = 0f;
-		FailRecycle();
+		int panelty = itemCount - successCount;
+		Debug.Log($"클리어 실패: {panelty}");
+
+		DataManager.Instance.GetRecycleEcoDamage(panelty);
+		_gameOverPanel.gameObject.SetActive(true);
+		_gameOverPanel.StartFaceIn(FailRecycle);
 	}
 
 	public void OnTouchStartButton()
 	{
 		_startPanel.SetActive(false);
+		_tutorialPanel.SetActive(false);
 		_timer.TimerStart();
 
 		var itemList = DataManager.Instance.AllItem;

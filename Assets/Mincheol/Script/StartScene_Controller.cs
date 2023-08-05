@@ -11,8 +11,12 @@ public class StartScene_Controller : MonoBehaviour
    
     void Start()
     {
+		SceneChanger.Create();
         StartCoroutine(FadeTextToFullAlpha());
         stageUI.SetActive(false);
+
+
+		Audio_Controller.instance.BGMPlay_GameStart();
     }
 
     public IEnumerator FadeTextToFullAlpha() // 알파값 0에서 1로 전환

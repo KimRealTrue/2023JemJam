@@ -42,6 +42,8 @@ public class ItemObject : MonoBehaviour
 
 			if (_lifeTime <= 0) {
 				_isAlive = false;
+
+				DataManager.Instance.GetEcoDamage();
 				Destroy(gameObject);
 			}
 		}
@@ -51,6 +53,7 @@ public class ItemObject : MonoBehaviour
 	public void PickByTouch()
 	{
 		_isAlive = false;
+		Audio_Controller.instance.EffectPlay_TrashPickup();
 		PickAim();
 	}
 

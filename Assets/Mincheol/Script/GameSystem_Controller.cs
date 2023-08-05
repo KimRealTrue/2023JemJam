@@ -8,7 +8,7 @@ public class GameSystem_Controller : MonoBehaviour
     [SerializeField] GameObject tutorial;
     [SerializeField] Button lButton;
     [SerializeField] Button rButton;
-
+	public int stageNumber;
     public int spawned;
 
     public static GameSystem_Controller instance = null;
@@ -28,6 +28,10 @@ public class GameSystem_Controller : MonoBehaviour
 
     void Start()
     {
+		DataManager.Instance.ecoDamage = 0;
+		DataManager.Instance.stage = stageNumber;
+
+		Audio_Controller.instance.BGMPlay_PlayingGame();
         ShowTutorial();
     }
 

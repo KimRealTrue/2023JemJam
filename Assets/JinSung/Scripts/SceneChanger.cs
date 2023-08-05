@@ -29,7 +29,7 @@ public class SceneChanger : MonoBehaviour
 	private static SceneChanger _instance;
 	public static void Create()
 	{
-		GameObject go = new GameObject("DataManager");
+		GameObject go = new GameObject("SceneChanger");
 		_instance = go.AddComponent<SceneChanger>();
 		DontDestroyOnLoad(go);
 	}
