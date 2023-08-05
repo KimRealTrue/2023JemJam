@@ -5,7 +5,7 @@ using UnityEngine;
 public class TrashSpawner : MonoBehaviour
 {
 	[SerializeField]
-	private List<Object.ItemObject> _prefabList = new List<Object.ItemObject>();
+	private List<ItemObject> _prefabList = new List<ItemObject>();
 	[SerializeField]
 	private SpriteRenderer _spawnArea;
 	private Vector2 _spawnRange;
@@ -26,9 +26,9 @@ public class TrashSpawner : MonoBehaviour
 	{
 		int idx = 0;
 		foreach (var t in trashList) {
-			//Object.ItemObject itemPrefab = _prefabList.Find(p => p.Data.Name == t.name && p.Data.TrashType == t.trashType);
-			Object.ItemObject itemPrefab = _prefabList.Find(p => p.Data.TrashType == t.trashType);
-			Object.ItemObject item = GameObject.Instantiate(itemPrefab);
+			//ItemObject itemPrefab = _prefabList.Find(p => p.Data.Name == t.name && p.Data.TrashType == t.trashType);
+			ItemObject itemPrefab = _prefabList.Find(p => p.Data.TrashType == t.trashType);
+			ItemObject item = GameObject.Instantiate(itemPrefab);
 			item.transform.SetParent(_trashParent);
 			item.transform.position = new Vector3(Random.Range(-_spawnRange.x, _spawnRange.x),
 				Random.Range(-_spawnRange.y, _spawnRange.y),

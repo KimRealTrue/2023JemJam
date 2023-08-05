@@ -20,7 +20,7 @@ public class ItemPickupReceiver : MonoBehaviour
 		if (EventSystem.current.IsPointerOverGameObject() == false) {
 			GameObject contactedObject = RaycastObject();
 			if (contactedObject != null) {
-				Object.ItemObject item = contactedObject.transform.parent.GetComponent<Object.ItemObject>();
+				ItemObject item = contactedObject.transform.parent.GetComponent<ItemObject>();
 				if (item != null) {
 					item.PickByTouch();
 					DataManager.Instance.GetItem(item);

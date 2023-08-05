@@ -93,7 +93,7 @@ public class RecyclePickupReceiver : MonoBehaviour
 		if (trashCan != null) {
 			GarbageBox tc = trashCan.gameObject.GetComponent<GarbageBox>();
 			if (_draggedItem != null) {
-				Object.ItemObject item = _draggedItem.GetComponent<Object.ItemObject>();
+				ItemObject item = _draggedItem.GetComponent<ItemObject>();
 				//Debug.Log(tc);
 				//Debug.Log(item);
 				if (tc.trashType == item.Data.TrashType) {

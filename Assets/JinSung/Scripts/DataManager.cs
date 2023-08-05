@@ -24,8 +24,8 @@ public class DataManager : MonoBehaviour
 	}
 
 
-	private List<Object.ItemObject> _itemDataList = new List<Object.ItemObject>();
-	public List<Object.ItemObject> AllItem {
+	private List<ItemObject> _itemDataList = new List<ItemObject>();
+	public List<ItemObject> AllItem {
 		get {
 			return _itemDataList;
 		}
@@ -40,7 +40,7 @@ public class DataManager : MonoBehaviour
 
 
 
-	public void GetItem(Object.ItemObject item)
+	public void GetItem(ItemObject item)
 	{
 		Debug.Log($"아이템 획득: {item}");
 
